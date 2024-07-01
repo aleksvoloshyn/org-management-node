@@ -20,6 +20,7 @@ const userSchema = new Schema(
     nick_name: {
       type: String,
       required: true,
+      unique: true,
     },
     description: {
       type: String,
@@ -45,6 +46,10 @@ const userSchema = new Schema(
       type: String,
       minlength: 6,
       required: true,
+    },
+    token: {
+      type: String,
+      default: '',
     },
   },
   { versionKey: false, timestamps: true }

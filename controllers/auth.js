@@ -6,11 +6,17 @@ const HttpError = require('../middlewares/HttpError')
 const ctrlWrapper = require('../middlewares/ctrlWrapper')
 const { SECRET_KEY } = process.env
 
-const register = async (req, res) => {
-  const { email, password } = req.body
-  const user = await User.findOne({ email })
-  if (user) {
+const signup = async (req, res) => {
+  const { email, password, nick_name } = req.body
+  const userEmail = await User.findOne({ email })
+  const userNickName = await User.findOne({ nick_name })
+
+  // проверки на повторные использования (email, nickname)
+  if (userEmail) {
     throw HttpError(409, 'Email already in use')
+  }
+  if (userNickName) {
+    throw HttpError(409, `Nickname ${nick_name} already exists`)
   }
 
   const hashPassword = await bcrypt.hash(password, 10)
@@ -21,7 +27,7 @@ const register = async (req, res) => {
     name: newUser.name,
   })
 }
-const login = async (req, res) => {
+const signin = async (req, res) => {
   const { email, password } = req.body
   const user = await User.findOne({ email })
   if (!user) {
@@ -37,7 +43,26 @@ const login = async (req, res) => {
   }
 
   const token = jwt.sign(payload, SECRET_KEY, { expiresIn: '24h' })
+
+  await User.findByIdAndUpdate(user._id, { token })
+
   res.json({ token })
 }
 
-module.exports = { register: ctrlWrapper(register), login: ctrlWrapper(login) }
+const getCurrent = async (req, res) => {
+  const { email, nick_name } = req.user
+  res.json({ email, nick_name })
+}
+
+const logout = async (req, res) => {
+  const { _id } = req.user
+  await User.findByIdAndUpdate(_id, { token: '' })
+  res.json({ message: 'Logout success' })
+}
+
+module.exports = {
+  register: ctrlWrapper(signup),
+  login: ctrlWrapper(signin),
+  getCurrent: ctrlWrapper(getCurrent),
+  logout: ctrlWrapper(logout),
+}
