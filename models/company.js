@@ -51,14 +51,10 @@ const updateCompanySchema = Joi.object({
   description: Joi.string().required(),
   type: Joi.string().required(),
 })
-// const updateFavoriteSchema = Joi.object({
-//   favorite: Joi.boolean().required(),
-// })
 
 const schemas = {
   createCompanySchema,
   updateCompanySchema,
-  // updateFavoriteSchema,
 }
 
 const Company = model('company', companySchema)

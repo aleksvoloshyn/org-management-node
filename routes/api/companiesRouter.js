@@ -27,12 +27,5 @@ companiesRouter.put(
   validateBody(schemas.updateCompanySchema),
   ctrl.updateCompany
 )
-// companiesRouter.patch(
-//   '/:id/favorite',
-//   authenticate,
-//   isValidId,
-//   validateBody(schemas.updateFavoriteSchema),
-//   ctrl.updateFavorite
-// )
 
 module.exports = companiesRouter

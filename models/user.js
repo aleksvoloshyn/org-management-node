@@ -22,6 +22,10 @@ const userSchema = new Schema(
       required: true,
       unique: true,
     },
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    },
     description: {
       type: String,
       required: true,
@@ -61,6 +65,7 @@ const registerSchema = Joi.object({
   first_name: Joi.string().required(),
   last_name: Joi.string().required(),
   nick_name: Joi.string().required(),
+  isAdmin: Joi.boolean(),
   description: Joi.string().required(),
   position: Joi.string().required(),
   email: Joi.string().pattern(emailRegexp).required(),
@@ -74,7 +79,11 @@ const loginSchema = Joi.object({
   password: Joi.string().min(6).required(),
 })
 
-const schemas = { registerSchema, loginSchema }
+const updateIsAdmin = Joi.object({
+  isAdmin: Joi.boolean().required(),
+})
+
+const schemas = { registerSchema, loginSchema, updateIsAdmin }
 
 const User = model('user', userSchema)
 

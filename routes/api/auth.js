@@ -2,6 +2,7 @@ const express = require('express')
 const ctrl = require('../../controllers/auth')
 const validateBody = require('../../middlewares/validateBody')
 const authenticate = require('../../middlewares/authenticate')
+const isValidId = require('../../middlewares/isValidId')
 const { schemas } = require('../../models/user')
 const router = express.Router()
 
@@ -19,5 +20,14 @@ router.get('/profile', authenticate, ctrl.getProfile)
 
 // logout
 router.post('/logout', authenticate, ctrl.logout)
+
+// change admin rights
+router.patch(
+  '/:id/isAdmin',
+  authenticate,
+  isValidId,
+  validateBody(schemas.updateIsAdmin),
+  ctrl.updateIsAdmin
+)
 
 module.exports = router

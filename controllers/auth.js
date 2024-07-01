@@ -63,10 +63,20 @@ const logout = async (req, res) => {
   res.json({ message: 'Logout success' })
 }
 
+const updateIsAdmin = async (req, res) => {
+  const { id } = req.params
+  const result = await User.findByIdAndUpdate(id, req.body, { new: true })
+  if (!result) {
+    throw HttpError(404, 'Not found')
+  }
+  res.json(result)
+}
+
 module.exports = {
   register: ctrlWrapper(signup),
   login: ctrlWrapper(signin),
   getCurrent: ctrlWrapper(getCurrent),
   getProfile: ctrlWrapper(getProfile),
   logout: ctrlWrapper(logout),
+  updateIsAdmin: ctrlWrapper(updateIsAdmin),
 }
