@@ -1,0 +1,42 @@
+[
+  {
+    "name": "ABC Company",
+    "address": "123 Main St, Anytown, USA",
+    "serviceOfActivity": "IT Services",
+    "numberOfEmployees": "100-200",
+    "description": "Leading provider of IT solutions",
+    "type": "Tech"
+  },
+  {
+    "name": "XYZ Corporation",
+    "address": "456 Elm Ave, Othertown, USA",
+    "serviceOfActivity": "Financial Services",
+    "numberOfEmployees": "500+",
+    "description": "Global financial advisory firm",
+    "type": "Finance"
+  },
+  {
+    "name": "Smith & Sons",
+    "address": "789 Oak Blvd, Anycity, USA",
+    "serviceOfActivity": "Construction",
+    "numberOfEmployees": "50-100",
+    "description": "Family-owned construction company",
+    "type": "Construction"
+  },
+  {
+    "name": "Tech Innovations Ltd.",
+    "address": "101 Pine Ln, Innovation City, USA",
+    "serviceOfActivity": "Technology",
+    "numberOfEmployees": "200-500",
+    "description": "Innovative technology startup",
+    "type": "Tech"
+  },
+  {
+    "name": "Global Logistics Inc.",
+    "address": "234 Cedar Rd, Logisticsville, USA",
+    "serviceOfActivity": "Logistics",
+    "numberOfEmployees": "1000+",
+    "description": "Global logistics and transportation services",
+    "type": "Logistics"
+  }
+]
