@@ -49,13 +49,13 @@ const signin = async (req, res) => {
   res.json({ token })
 }
 
-const getCurrent = async (req, res) => {
-  const { email, nick_name } = req.user
-  res.json({ email, nick_name })
-}
-const getProfile = async (req, res) => {
-  res.json(req.user)
-}
+// const getCurrent = async (req, res) => {
+//   const { email, nick_name } = req.user
+//   res.json({ email, nick_name })
+// }
+// const getProfile = async (req, res) => {
+//   res.json(req.user)
+// }
 
 const logout = async (req, res) => {
   const { _id } = req.user
@@ -63,27 +63,27 @@ const logout = async (req, res) => {
   res.json({ message: 'Logout success' })
 }
 
-const updateIsAdmin = async (req, res) => {
-  const { id } = req.params
-  const result = await User.findByIdAndUpdate(id, req.body, { new: true })
-  if (!result) {
-    throw HttpError(404, 'Not found')
-  }
-  res.json(result)
-}
+// const updateIsAdmin = async (req, res) => {
+//   const { id } = req.params
+//   const result = await User.findByIdAndUpdate(id, req.body, { new: true })
+//   if (!result) {
+//     throw HttpError(404, 'Not found')
+//   }
+//   res.json(result)
+// }
 
-const getUserList = async (req, res) => {
-  const { _id: owner } = req.user
-  const result = await User.find({ owner }, '-createdAt -updatedAt').populate()
-  res.json(result)
-}
+// const getUserList = async (req, res) => {
+//   const { _id: owner } = req.user
+//   const result = await User.find({ owner }, '-createdAt -updatedAt').populate()
+//   res.json(result)
+// }
 
 module.exports = {
   register: ctrlWrapper(signup),
   login: ctrlWrapper(signin),
-  getCurrent: ctrlWrapper(getCurrent),
-  getProfile: ctrlWrapper(getProfile),
+  // getCurrent: ctrlWrapper(getCurrent),
+  // getProfile: ctrlWrapper(getProfile),
   logout: ctrlWrapper(logout),
-  updateIsAdmin: ctrlWrapper(updateIsAdmin),
-  getUserList: ctrlWrapper(getUserList),
+  // updateIsAdmin: ctrlWrapper(updateIsAdmin),
+  // getUserList: ctrlWrapper(getUserList),
 }
