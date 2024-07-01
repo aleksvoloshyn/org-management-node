@@ -38,28 +38,19 @@ const createCompany = async (req, res) => {
   res.status(201).json(result)
 }
 
-// const updateContact = async (req, res) => {
-//   const { id } = req.params
-//   const result = await Contact.findByIdAndUpdate(id, req.body, { new: true })
-//   if (!result) {
-//     throw HttpError(404, 'Not found')
-//   }
-//   res.json(result)
-// }
-// const updateFavorite = async (req, res) => {
-//   const { id } = req.params
-//   const result = await Contact.findByIdAndUpdate(id, req.body, { new: true })
-//   if (!result) {
-//     throw HttpError(404, 'Not found')
-//   }
-//   res.json(result)
-// }
+const updateCompany = async (req, res) => {
+  const { id } = req.params
+  const result = await Company.findByIdAndUpdate(id, req.body, { new: true })
+  if (!result) {
+    throw HttpError(404, 'Not found')
+  }
+  res.json(result)
+}
 
 module.exports = {
   getAllCompanies: ctrlWrapper(getAllCompanies),
   getOneCompanyById: ctrlWrapper(getOneCompanyById),
   deleteCompany: ctrlWrapper(deleteCompany),
   createCompany: ctrlWrapper(createCompany),
-  // updateContact: ctrlWrapper(updateContact),
-  // updateFavorite: ctrlWrapper(updateFavorite),
+  updateCompany: ctrlWrapper(updateCompany),
 }

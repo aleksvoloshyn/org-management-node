@@ -20,13 +20,13 @@ companiesRouter.post(
   ctrl.createCompany
 )
 
-// companiesRouter.put(
-//   '/:id',
-//   authenticate,
-//   isValidId,
-//   validateBody(schemas.updateContactSchema),
-//   ctrl.updateContact
-// )
+companiesRouter.put(
+  '/:id',
+  authenticate,
+  isValidId,
+  validateBody(schemas.updateCompanySchema),
+  ctrl.updateCompany
+)
 // companiesRouter.patch(
 //   '/:id/favorite',
 //   authenticate,

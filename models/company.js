@@ -43,18 +43,21 @@ const createCompanySchema = Joi.object({
   type: Joi.string(),
 })
 
-// const updateContactSchema = Joi.object({
-//   name: Joi.string().required(),
-//   email: Joi.string().required(),
-//   phone: Joi.string().required(),
-// })
+const updateCompanySchema = Joi.object({
+  name: Joi.string().required(),
+  address: Joi.string().required(),
+  serviceOfActivity: Joi.string().required(),
+  numberOfEmployees: Joi.string().required(),
+  description: Joi.string().required(),
+  type: Joi.string().required(),
+})
 // const updateFavoriteSchema = Joi.object({
 //   favorite: Joi.boolean().required(),
 // })
 
 const schemas = {
   createCompanySchema,
-  // updateContactSchema,
+  updateCompanySchema,
   // updateFavoriteSchema,
 }
 
