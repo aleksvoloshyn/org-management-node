@@ -1,5 +1,5 @@
 const express = require('express')
-const ctrl = require('../../controllers/contactsControllers')
+const ctrl = require('../../controllers/companiesControllers')
 const companiesRouter = express.Router()
 const validateBody = require('../../middlewares/validateBody')
 const isValidId = require('../../middlewares/isValidId')
