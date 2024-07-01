@@ -9,7 +9,8 @@ const { schemas } = require('../../models/company')
 
 companiesRouter.get('/', authenticate, ctrl.getAllCompanies)
 
-companiesRouter.get('/:id', authenticate, isValidId, ctrl.getOneCompanyById)
+// companiesRouter.get('/:id', authenticate, isValidId, ctrl.getOneCompanyById)
+companiesRouter.get('/:id', isValidId, ctrl.getOneCompanyById)
 
 companiesRouter.delete('/:id', authenticate, ctrl.deleteCompany)
 
