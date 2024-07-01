@@ -14,6 +14,9 @@ router.post('/signin', validateBody(schemas.loginSchema), ctrl.login)
 // current user by token
 router.get('/current', authenticate, ctrl.getCurrent)
 
+// profile
+router.get('/profile', authenticate, ctrl.getProfile)
+
 // logout
 router.post('/logout', authenticate, ctrl.logout)
 

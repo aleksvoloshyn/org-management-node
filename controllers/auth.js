@@ -53,6 +53,9 @@ const getCurrent = async (req, res) => {
   const { email, nick_name } = req.user
   res.json({ email, nick_name })
 }
+const getProfile = async (req, res) => {
+  res.json(req.user)
+}
 
 const logout = async (req, res) => {
   const { _id } = req.user
@@ -64,5 +67,6 @@ module.exports = {
   register: ctrlWrapper(signup),
   login: ctrlWrapper(signin),
   getCurrent: ctrlWrapper(getCurrent),
+  getProfile: ctrlWrapper(getProfile),
   logout: ctrlWrapper(logout),
 }
