@@ -21,16 +21,16 @@ const getOneCompanyById = async (req, res) => {
   res.json(result)
 }
 
-// const deleteContact = async (req, res) => {
-//   const { id } = req.params
-//   const result = await Contact.findByIdAndDelete(id)
-//   if (!result) {
-//     throw HttpError(404, 'Not found')
-//   }
-//   res.json({
-//     message: 'Delete success',
-//   })
-// }
+const deleteCompany = async (req, res) => {
+  const { id } = req.params
+  const result = await Company.findByIdAndDelete(id)
+  if (!result) {
+    throw HttpError(404, 'Not found')
+  }
+  res.json({
+    message: 'Delete success',
+  })
+}
 
 const createCompany = async (req, res) => {
   const { _id: owner } = req.user
@@ -58,7 +58,7 @@ const createCompany = async (req, res) => {
 module.exports = {
   getAllCompanies: ctrlWrapper(getAllCompanies),
   getOneCompanyById: ctrlWrapper(getOneCompanyById),
-  // deleteContact: ctrlWrapper(deleteContact),
+  deleteCompany: ctrlWrapper(deleteCompany),
   createCompany: ctrlWrapper(createCompany),
   // updateContact: ctrlWrapper(updateContact),
   // updateFavorite: ctrlWrapper(updateFavorite),
