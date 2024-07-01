@@ -72,6 +72,12 @@ const updateIsAdmin = async (req, res) => {
   res.json(result)
 }
 
+const getUserList = async (req, res) => {
+  const { _id: owner } = req.user
+  const result = await User.find({ owner }, '-createdAt -updatedAt').populate()
+  res.json(result)
+}
+
 module.exports = {
   register: ctrlWrapper(signup),
   login: ctrlWrapper(signin),
@@ -79,4 +85,5 @@ module.exports = {
   getProfile: ctrlWrapper(getProfile),
   logout: ctrlWrapper(logout),
   updateIsAdmin: ctrlWrapper(updateIsAdmin),
+  getUserList: ctrlWrapper(getUserList),
 }

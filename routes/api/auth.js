@@ -30,4 +30,7 @@ router.patch(
   ctrl.updateIsAdmin
 )
 
+// get all users
+router.get('/userlist', authenticate, ctrl.getUserList)
+
 module.exports = router
