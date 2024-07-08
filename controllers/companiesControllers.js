@@ -11,6 +11,17 @@ const getAllCompanies = async (req, res) => {
   res.json(result)
 }
 
+const getAllCompaniesAdmin = async (req, res) => {
+  try {
+    const result = await Company.find({}, '-createdAt -updatedAt').populate(
+      'owner'
+    )
+    res.json(result)
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to fetch companies', error })
+  }
+}
+
 const getOneCompanyById = async (req, res) => {
   const { id } = req.params
   // const result = await Contact.findOne({ _id: id })
@@ -53,4 +64,5 @@ module.exports = {
   deleteCompany: ctrlWrapper(deleteCompany),
   createCompany: ctrlWrapper(createCompany),
   updateCompany: ctrlWrapper(updateCompany),
+  getAllCompaniesAdmin: ctrlWrapper(getAllCompaniesAdmin),
 }

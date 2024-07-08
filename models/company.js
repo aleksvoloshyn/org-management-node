@@ -41,6 +41,7 @@ const createCompanySchema = Joi.object({
   numberOfEmployees: Joi.string(),
   description: Joi.string(),
   type: Joi.string(),
+  owner: Joi.string(),
 })
 
 const updateCompanySchema = Joi.object({

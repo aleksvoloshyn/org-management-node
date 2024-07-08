@@ -21,7 +21,18 @@ router.patch(
   ctrl.updateIsAdmin
 )
 
+//put users
+router.put(
+  '/:id',
+  authenticate,
+  isValidId,
+  validateBody(schemas.updateUsersSchema),
+  ctrl.updateUsers
+)
+
 // get all users
 router.get('/userslist', authenticate, ctrl.getUserList)
+
+router.delete('/:id', authenticate, ctrl.deleteUser)
 
 module.exports = router
