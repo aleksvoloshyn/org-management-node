@@ -33,6 +33,11 @@ router.put(
 // get all users
 router.get('/userslist', authenticate, ctrl.getUserList)
 
+
+// get one user by id
+router.get('/:id', isValidId, ctrl.getOneUserbyID)
+
+// delete user
 router.delete('/:id', authenticate, ctrl.deleteUser)
 
 module.exports = router

@@ -35,6 +35,15 @@ const getUserList = async (req, res) => {
   res.json(result)
 }
 
+const getOneUserbyID = async (req, res) => {
+  const { id } = req.params
+  const result = await User.findById(id)
+  if (!result) {
+    throw HttpError(404, 'Not found')
+  }
+  res.json(result)
+}
+
 const deleteUser = async (req, res) => {
   const { id } = req.params
   const result = await User.findByIdAndDelete(id)
@@ -53,4 +62,5 @@ module.exports = {
   getUserList: ctrlWrapper(getUserList),
   updateUsers: ctrlWrapper(updateUsers),
   deleteUser: ctrlWrapper(deleteUser),
+  getOneUserbyID: ctrlWrapper(getOneUserbyID),
 }
